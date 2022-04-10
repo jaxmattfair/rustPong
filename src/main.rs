@@ -68,17 +68,17 @@ impl MainState {
             self.ball.y = screen_height() / 2.0;
         }
 
-        //Paddle movements
-        if is_key_down(KeyCode::Right) {
+        //Paddle movements & paddle collisions with the sides of the screen
+        if is_key_down(KeyCode::Right) && self.top_paddle.right() <= screen_width() {
             self.top_paddle.x += 10.0
         }
-        if is_key_down(KeyCode::Left) {
+        if is_key_down(KeyCode::Left) && self.top_paddle.left() >= 0.0 {
             self.top_paddle.x -= 10.0
         }
-        if is_key_down(KeyCode::D) {
+        if is_key_down(KeyCode::D) && self.bottom_paddle.right() <= screen_width() {
             self.bottom_paddle.x += 10.0
         }
-        if is_key_down(KeyCode::A) {
+        if is_key_down(KeyCode::A) && self.bottom_paddle.left() >= 0.0 {
             self.bottom_paddle.x -= 10.0
         }
     }
